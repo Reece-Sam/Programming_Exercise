@@ -1,20 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
 
-<body>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
 
-<div class="profile-box">
-    <h1>Welcome, {{ session['user'] }} </h1>
-    <p>This is your profile page.</p>
-
-    <a href="/logout">Logout</a>
-</div>
-
-</body>
+  <body>
+    <div class="profile-box">
+      <h1>Welcome, {{ session['user'] }}</h1>  
+      <p>This is your profile page.</p>
+        
+    {% if g.user %}
+    <h1>{{ g.user.username }}'s Profile</h1>
+    <p>You are user number #{{ g.user.id }}</p>
+{% else %}
+    <p>User not logged in</p>
+{% endif %}
+     
+      <a href="/logout">Logout</a>
+    </div>
+  </body>
 </html>
