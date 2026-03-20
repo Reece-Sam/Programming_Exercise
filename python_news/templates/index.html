@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BBC News</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1>📰 BBC News Headlines</h1>
+
+    <div class="news-container">
+        {% for article in articles %}
+            <div class="news-card">
+                <img src="{{ article.urlToImage }}" alt="News Image">
+                <h2>{{ article.title }}</h2>
+                <p>{{ article.description }}</p>
+                <a href="{{ article.url }}" target="_blank">Read more</a>
+            </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
